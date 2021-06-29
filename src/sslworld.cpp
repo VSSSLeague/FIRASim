@@ -372,7 +372,7 @@ SSLWorld::SSLWorld(QGLWidget *parent, ConfigWidget *_cfg, RobotsFormation *form)
 int SSLWorld::robotIndex(unsigned int robot, int team)
 {
     if (robot >= cfg->Robots_Count())
-        return 0;
+        return -1;
     return robot + team * cfg->Robots_Count();
 }
 
