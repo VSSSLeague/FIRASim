@@ -27,7 +27,7 @@ Copyright (C) 2011, Parsian Robotic Center (eew.aut.ac.ir/~parsian/grsim)
 
 #include <iostream>
 
-GLWidget::GLWidget(QWidget *parent, ConfigWidget *_cfg)
+GLWidget::GLWidget(QWidget *parent, ConfigWidget *_cfg, bool forceDivisionA)
     : QGLWidget(parent)
 {
     frames = 0;
@@ -43,7 +43,7 @@ GLWidget::GLWidget(QWidget *parent, ConfigWidget *_cfg)
     //forms[5]->loadFromFile(qApp->applicationDirPath() + "/../formation/normal.formation");
     //forms[5] = new RobotsFormation(4);  //inside type 2
 
-    ssl = new SSLWorld(this, cfg, forms[5]);
+    ssl = new SSLWorld(this, cfg, forceDivisionA ? forms[4] : forms[5]);
     Current_robot = 0;
     Current_team = 0;
     cammode = 0;

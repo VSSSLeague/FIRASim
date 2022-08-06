@@ -33,7 +33,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(bool forceDivisionA, QWidget *parent = nullptr);
     ~MainWindow() override;
 public slots:
     void update();

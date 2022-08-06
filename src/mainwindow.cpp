@@ -50,7 +50,7 @@ void MainWindow::customFPS(int fps)
     logStatus(QString("new FPS set by user: %1").arg(fps),"red");
 }
 
-MainWindow::MainWindow(QWidget *parent)
+MainWindow::MainWindow(bool forceDivisionA, QWidget *parent)
     : QMainWindow(parent)
 {
     QDir dir = QApplication::applicationDirPath();
@@ -67,10 +67,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     /* Widgets */
 
-    configwidget = new ConfigWidget();
+    configwidget = new ConfigWidget(forceDivisionA);
     dockconfig = new ConfigDockWidget(this,configwidget);
 
-    glwidget = new GLWidget(this,configwidget);
+    glwidget = new GLWidget(this,configwidget,forceDivisionA);
     glwidget->setWindowTitle(tr("Simulator"));
     glwidget->resize(512,512);    
 
@@ -399,7 +399,7 @@ void MainWindow::restartSimulator()
     delete glwidget->ssl;
    
     if(configwidget->Division() == "Division A") {
-    	configwidget->v_Robots_Count->setInt(5);
+        configwidget->v_Robots_Count->setInt(5);
     }
     else if(configwidget->Division() == "Division B") {
     	configwidget->v_Robots_Count->setInt(3);

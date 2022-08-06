@@ -29,7 +29,13 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationDomain("parsian-robotics.com");
     QCoreApplication::setApplicationName("grSim");
     QApplication a(argc, argv);
-    MainWindow w;
+
+    bool forceDivisionA = false;
+    if(std::find(argv, argend, std::string("--5v5")) != argend) {
+        forceDivisionA = true;
+    }
+
+    MainWindow w(forceDivisionA);
 
     if (std::find(argv, argend, std::string("--headless")) != argend
         || std::find(argv, argend, std::string("-H")) != argend) {

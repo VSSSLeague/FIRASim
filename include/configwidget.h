@@ -121,7 +121,7 @@ protected:
   VarTreeModel * tmodel;    
 public:
   VarListPtr geo_vars;
-  ConfigWidget();
+  ConfigWidget(bool forceDivisionA = false);
   ~ConfigWidget() override;
 
   QSettings* robot_settings;

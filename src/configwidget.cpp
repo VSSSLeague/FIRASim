@@ -32,7 +32,7 @@ Copyright (C) 2011, Parsian Robotic Center (eew.aut.ac.ir/~parsian/grsim)
     v_##name->addItem(str);
 
 
-ConfigWidget::ConfigWidget()
+ConfigWidget::ConfigWidget(bool forceDivisionA)
 {      
   tmodel=new VarTreeModel();
   this->setModel(tmodel);  
@@ -42,11 +42,11 @@ ConfigWidget::ConfigWidget()
 
   VarListPtr game_vars(new VarList("Game"));
   geo_vars->addChild(game_vars);
-  ADD_ENUM(StringEnum, Division, "Division B", "Division")
+  ADD_ENUM(StringEnum, Division, forceDivisionA ? "Division A" : "Division B", "Division")
   ADD_TO_ENUM(Division, "Division A");
   ADD_TO_ENUM(Division, "Division B");
   END_ENUM(game_vars, Division);
-  ADD_VALUE(game_vars,Int, Robots_Count, 3, "Robots Count")
+  ADD_VALUE(game_vars,Int, Robots_Count, forceDivisionA ? 5 : 3, "Robots Count")
   VarListPtr fields_vars(new VarList("Field"));
   VarListPtr vsss_a_vars(new VarList("VSSS A"));
   VarListPtr vsss_b_vars(new VarList("VSSS B"));

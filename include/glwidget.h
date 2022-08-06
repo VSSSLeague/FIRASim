@@ -34,7 +34,7 @@ class GLWidget : public QGLWidget {
 
     Q_OBJECT
 public:
-    GLWidget(QWidget *parent,ConfigWidget* _cfg);
+    GLWidget(QWidget *parent,ConfigWidget* _cfg, bool forceDivisionA);
     ~GLWidget() override;
     dReal getFPS();
     ConfigWidget* cfg;   
